@@ -6,7 +6,7 @@ const certificatesData = [
         description: "Professional Certificate in Data Analysis covering data visualization, SQL, Python, and statistical analysis",
         icon: "📊",
         color: "#1F4E79",
-        pdfPath: "/certifacates/IBM data analyst.pdf",
+        pdfPath: "/certifacates/IBM Data Analyst.pdf",
         previewImage: "/certifacates/previews/IDA.png",
         tags: ["Data Analysis", "Python", "SQL", "Visualization"]
     },
