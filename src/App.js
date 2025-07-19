@@ -249,7 +249,7 @@ export default function App() {
                   href="#footer"
                   className="flex items-center gap-2 px-6 py-3 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Contact Me
+                  Contact Meeee
                 </a>
               </div>
             </div>
