@@ -120,5 +120,3 @@ If you have any questions or want to connect:
 - LinkedIn: [Youness El Meki](https://www.linkedin.com/in/youness-el-meki-60316a200/)
 
 ---
-
-Made with ❤️ by Youness El Meki
