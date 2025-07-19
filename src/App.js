@@ -149,7 +149,7 @@ export default function App() {
       <nav className={`fixed top-0 left-0 right-0 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} shadow-lg z-50 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className={`flex items-center justify-between transition-all duration-1000 ${navPop ? 'scale-105 opacity-100' : 'scale-100 opacity-100'}`}> 
-            <div className="text-2xl font-bold text-gray-800">
+            <div className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
               Youness El Meki
             </div>
             
@@ -161,7 +161,7 @@ export default function App() {
                   className={`text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === section 
                       ? 'text-blue-600' 
-                      : 'text-gray-700 hover:text-blue-600'
+                      : darkMode ? 'text-gray-200 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
                   }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -180,7 +180,7 @@ export default function App() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleDarkMode}
-                className="text-gray-700 hover:text-purple-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
+                className={`${darkMode ? 'text-gray-200 hover:text-yellow-300 hover:bg-gray-700' : 'text-gray-700 hover:text-purple-600 hover:bg-gray-100'} transition-colors duration-200 p-1 rounded-full`}
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -189,7 +189,7 @@ export default function App() {
                 href="https://github.com/Youness331"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-black transition-colors duration-200"
+                className={`${darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition-colors duration-200`}
               >
                 <Github size={20} />
               </a>
@@ -230,7 +230,7 @@ export default function App() {
               <div className="h-10 mb-4">
                 <span className="text-xl text-blue-600 font-mono whitespace-pre">{typedText}<span className="animate-pulse">|</span></span>
               </div>
-              <p className={`text-xl text-gray-700 mb-8 transition-all duration-1000 delay-300 ${
+              <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-8 transition-all duration-1000 delay-300 ${
                 activeSection === 'home' && !isAnimating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
  passionate about uncovering insights from data and building AI-powered solutions. Skilled in data wrangling, statistical analysis, machine learning, and visualization. I thrive on solving complex problems, optimizing business decisions, and exploring the latest in AI to drive innovation and real-world impact.              </p>
@@ -247,9 +247,9 @@ export default function App() {
                 </a>
                 <a
                   href="#footer"
-                  className="flex items-center gap-2 px-6 py-3 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className={`flex items-center gap-2 px-6 py-3 ${darkMode ? 'bg-gray-700 text-white border-gray-600 hover:bg-gray-600' : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'} border rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
                 >
-                  Contact Meeee
+                  Contact Me
                 </a>
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function App() {
               {projectsData.map((project, index) => (
                 <div
                   key={project.id}
-                  className={`bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 ${
+                  className={`${darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white'} p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 ${
                     (visibleProjects.includes(index) || activeSection === 'projects') && !isAnimating
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-12'
@@ -345,7 +345,7 @@ export default function App() {
                       </span>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-4 text-sm leading-relaxed`}>
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -401,7 +401,7 @@ export default function App() {
                   ></div>
                   
                   {/* Education Content */}
-                  <div className="ml-20 bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 w-full">
+                  <div className={`ml-20 ${darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white'} p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 w-full`}>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-2xl transform transition-transform duration-300 hover:scale-125 hover:rotate-12">
                         {education.icon}
@@ -426,7 +426,7 @@ export default function App() {
                       {education.degree}
                     </h3>
                     
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} text-sm leading-relaxed`}>
                       {education.institution}
                     </p>
                     
@@ -453,7 +453,7 @@ export default function App() {
               {certificatesData.map((certificate, index) => (
                 <div
                   key={certificate.id}
-                  className={`relative bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 cursor-pointer overflow-hidden ${
+                  className={`relative ${darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white'} p-6 rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 cursor-pointer overflow-hidden ${
                     (visibleCertificates.includes(index) || activeSection === 'certificates') && !isAnimating
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-12'
@@ -475,7 +475,7 @@ onClick={() => handleCertificateClick(certificate.pdfPath)}
                       <h3 className="text-lg font-bold" style={{ color: certificate.color }}>
                         {certificate.title}
                       </h3>
-                      <p className="text-sm text-gray-600 font-medium">{certificate.issuer}</p>
+                      <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'} font-medium`}>{certificate.issuer}</p>
                     </div>
                     <ExternalLink 
                       size={18} 
@@ -537,9 +537,9 @@ onClick={() => handleCertificateClick(certificate.pdfPath)}
         </section>
         
         {/* Footer */}
-        <footer id="footer" className="py-10 bg-gray-100 mt-20">
+        <footer id="footer" className={`py-10 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} mt-20`}>
           <div className="max-w-6xl mx-auto px-6 text-center">
-            <p className="text-gray-600">© {new Date().getFullYear()} Youness El Meki. All rights reserved.</p>
+            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>© {new Date().getFullYear()} Youness El Meki. All rights reserved.</p>
             <div className="flex justify-center gap-6 mt-4">
               <a
                 href="https://github.com/Youness331"
