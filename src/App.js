@@ -186,7 +186,7 @@ export default function App() {
         <section id="home" className="min-h-[calc(100vh-80px)] flex items-center mb-16">
           <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-10">
             <img
-              src={`${process.env.PUBLIC_URL}/mypic.jpg`}
+              src="./mypic.jpg"
               alt="Profile"
               className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-blue-200 mb-6 md:mb-0"
               style={{ minWidth: 256, minHeight: 256 }}
@@ -206,7 +206,7 @@ export default function App() {
                 activeSection === 'home' && !isAnimating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
                 <a
-                  href={`${process.env.PUBLIC_URL}/el meki youness_cv.pdf`}
+                                    href="./el meki youness_cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-300"
