@@ -6,7 +6,7 @@ A modern, responsive personal portfolio website built with React and TailwindCSS
 
 ## 🚀 Live Demo
 
-Visit the live portfolio at [https://youness331.github.io/portfolio/](https://youness331.github.io/portfolio/)
+Visit the live portfolio at [https://youness331.github.io/portfolio/](https://youness331.github.io/Portfolio/)
 
 ## ✨ Features
 
