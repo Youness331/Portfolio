@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Github, Linkedin, ExternalLink, Mail } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Mail, Moon, Sun } from "lucide-react";
 
 import skillsData from "./scripts/skills";
 import projectsData from "./scripts/projects";
@@ -18,6 +18,7 @@ export default function App() {
   const typewriterText = "Data scientist/Analyst & AI enthusiast"; // Updated text
   const typeIndex = useRef(0);
   const [navPop, setNavPop] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     // Initial page load animations
@@ -87,6 +88,29 @@ export default function App() {
     const timer = setTimeout(() => setNavPop(false), 1000);
     return () => clearTimeout(timer);
   }, [activeSection]);
+  
+  // Load dark mode preference from localStorage on initial load
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+    if (savedDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+  
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   const handleNavClick = (sectionId) => {
     setIsAnimating(true);
@@ -120,9 +144,9 @@ export default function App() {
     return titles[section];
   };
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} transition-colors duration-300`}>
       {/* Fixed Top Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+      <nav className={`fixed top-0 left-0 right-0 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} shadow-lg z-50 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className={`flex items-center justify-between transition-all duration-1000 ${navPop ? 'scale-105 opacity-100' : 'scale-100 opacity-100'}`}> 
             <div className="text-2xl font-bold text-gray-800">
@@ -154,6 +178,13 @@ export default function App() {
             </div>
             
             <div className="flex items-center space-x-4">
+              <button
+                onClick={toggleDarkMode}
+                className="text-gray-700 hover:text-purple-600 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100"
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
               <a
                 href="https://github.com/Youness331"
                 target="_blank"
@@ -236,7 +267,7 @@ export default function App() {
               {skillsData.map((skill, index) => (
                 <div
                   key={index}
-                  className={`bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 ${
+                  className={`${darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white'} p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 ${
                     (visibleSkills.includes(index) || activeSection === 'skills') && !isAnimating
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-10'
@@ -253,7 +284,7 @@ export default function App() {
                     </span>
                     <h3 className="text-xl font-semibold">{skill.title}</h3>
                   </div>
-                  <p className="text-gray-600 mb-4">{skill.description}</p>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-4`}>{skill.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {skill.technologies.map((tech, techIndex) => (
                       <span

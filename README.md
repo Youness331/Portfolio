@@ -8,18 +8,7 @@ A modern, responsive personal portfolio website built with React and TailwindCSS
 
 Visit the live portfolio at [https://youness331.github.io/portfolio/](https://youness331.github.io/Portfolio/)
 
-## ✨ Features
 
-- Responsive design that works on mobile and desktop
-- Smooth scrolling navigation
-- Animated section transitions
-- Typewriter text effect
-- Interactive skill cards with hover effects
-- Project showcase with categories
-- Education timeline
-- Certificate showcase with preview on hover
-- Dark/Light mode toggle (coming soon)
-- Contact section with form validation (coming soon)
 
 ## 🛠️ Technologies Used
 
