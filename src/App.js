@@ -105,6 +105,7 @@ export default function App() {
   };
 
   const handleCertificateClick = (pdfPath) => {
+    // When deployed, access files from root level
     window.open(pdfPath, '_blank');
   };
 
@@ -433,7 +434,7 @@ export default function App() {
                   }}
                   onMouseEnter={() => setHoveredCertificate(certificate.id)}
                   onMouseLeave={() => setHoveredCertificate(null)}
-onClick={() => handleCertificateClick(`${process.env.PUBLIC_URL}${certificate.pdfPath}`)}
+onClick={() => handleCertificateClick(certificate.pdfPath)}
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl transform transition-transform duration-300 hover:scale-125 hover:rotate-12">
@@ -475,7 +476,7 @@ onClick={() => handleCertificateClick(`${process.env.PUBLIC_URL}${certificate.pd
                     <div className="absolute inset-0 bg-black bg-opacity-90 rounded-lg flex items-center justify-center transition-all duration-300 z-10">
                       <div className="relative w-full h-full p-4">
                         <img 
-src={`${process.env.PUBLIC_URL}${certificate.previewImage}`}
+                          src={certificate.previewImage}
                           alt={`${certificate.title} preview`}
                           className="w-full h-full object-contain rounded-lg shadow-2xl transform transition-transform duration-300 hover:scale-105"
                           style={{ maxHeight: '90%' }}

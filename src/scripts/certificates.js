@@ -6,8 +6,8 @@ const certificatesData = [
         description: "Professional Certificate in Data Analysis covering data visualization, SQL, Python, and statistical analysis",
         icon: "📊",
         color: "#1F4E79",
-        pdfPath: "./certifacates/IBM Data Analyst.pdf",
-        previewImage: "./certifacates/previews/IDA.png",
+        pdfPath: "certifacates/IBM Data Analyst.pdf",
+        previewImage: "certifacates/previews/IDA.png",
         tags: ["Data Analysis", "Python", "SQL", "Visualization"]
     },
     {
@@ -17,8 +17,8 @@ const certificatesData = [
         description: "Comprehensive specialization covering supervised learning, unsupervised learning, and best practices in machine learning",
         icon: "🤖",
         color: "#FF6B35",
-        pdfPath: "./certifacates/machine learning.pdf",
-        previewImage: "./certifacates/previews/ml.png",
+        pdfPath: "certifacates/machine learning.pdf",
+        previewImage: "certifacates/previews/ml.png",
         tags: ["Machine Learning", "Neural Networks", "Python", "TensorFlow"]
     },
     {
@@ -28,8 +28,8 @@ const certificatesData = [
         description: "Foundational knowledge of AWS cloud services, architecture, and best practices for cloud computing",
         icon: "☁️",
         color: "#FF9900",
-        pdfPath: "./certifacates/aws.pdf",
-        previewImage: "./certifacates/previews/cloud_badge.png",
+        pdfPath: "certifacates/aws.pdf",
+        previewImage: "certifacates/previews/cloud_badge.png",
         tags: ["AWS", "Cloud Computing", "Architecture", "Services"]
     }
 ];
