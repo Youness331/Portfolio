@@ -2,7 +2,6 @@
 
 A modern, responsive personal portfolio website built with React and TailwindCSS, featuring animated sections for skills, projects, education, and certificates.
 
-![Portfolio Screenshot](./public/screen.png)
 
 ## 🚀 Live Demo
 
