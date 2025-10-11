@@ -5,12 +5,14 @@ import skillsData from "./scripts/skills";
 import projectsData from "./scripts/projects";
 import educationData from "./scripts/education";
 import certificatesData from "./scripts/certificates";
+import experiencesData from "./scripts/experiences";
 
 export default function App() {
   const [visibleSkills, setVisibleSkills] = useState([]);
   const [visibleProjects, setVisibleProjects] = useState([]);
   const [visibleEducation, setVisibleEducation] = useState([]);
   const [visibleCertificates, setVisibleCertificates] = useState([]);
+  const [visibleExperiences, setVisibleExperiences] = useState([]);
   const [hoveredCertificate, setHoveredCertificate] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
   const [isAnimating, setIsAnimating] = useState(false);
@@ -34,21 +36,27 @@ export default function App() {
       }, index * 250 + 1500);
     });
 
+    experiencesData.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleExperiences(prev => [...prev, index]);
+      }, index * 250 + 2500);
+    });
+
     educationData.forEach((_, index) => {
       setTimeout(() => {
         setVisibleEducation(prev => [...prev, index]);
-      }, index * 300 + 3000);
+      }, index * 300 + 3500);
     });
 
     certificatesData.forEach((_, index) => {
       setTimeout(() => {
         setVisibleCertificates(prev => [...prev, index]);
-      }, index * 250 + 4000);
+      }, index * 250 + 4500);
     });
 
     // Scroll listener for active section
     const handleScroll = () => {
-      const sections = ['home', 'skills', 'projects', 'education', 'certificates'];
+      const sections = ['home', 'experiences', 'projects', 'skills', 'education', 'certificates'];
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -138,6 +146,7 @@ export default function App() {
       home: "",
       skills: "Skills & Technologies",
       projects: "Featured Projects",
+      experiences: "Professional Experience",
       education: "Education Journey",
       certificates: "Certificates & Achievements"
     };
@@ -154,7 +163,7 @@ export default function App() {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              {['home', 'skills', 'projects', 'education', 'certificates'].map((section) => (
+              {['home', 'experiences', 'projects', 'skills', 'education', 'certificates'].map((section) => (
                 <button
                   key={section}
                   onClick={() => handleNavClick(section)}
@@ -255,8 +264,101 @@ export default function App() {
             </div>
           </div>
         </section>
+        
+        {/* Experiences Section */}
+        <section id="experiences" className="min-h-[calc(100vh-80px)] py-16 mb-16">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Professional Experience
+            </h2>
+            
+            <div className="space-y-12">
+              {experiencesData.map((experience, index) => (
+                <div
+                  key={experience.id}
+                  className={`${darkMode ? 'bg-gray-800 text-gray-200' : 'bg-white'} p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
+                    (visibleExperiences.includes(index) || activeSection === 'experiences') && !isAnimating
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-12'
+                  }`}
+                  style={{ 
+                    borderLeft: `5px solid ${experience.color}`,
+                    transition: 'all 0.8s ease-out',
+                    transitionDelay: activeSection === 'experiences' ? `${index * 0.3 + 0.3}s` : `${index * 0.3}s`
+                  }}
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <div className="flex items-center gap-3 mb-2 md:mb-0">
+                      <span className="text-3xl transform transition-transform duration-300 hover:scale-125 hover:rotate-12">
+                        {experience.icon}
+                      </span>
+                      <div>
+                        <h3 className="text-xl font-bold" style={{ color: experience.color }}>
+                          {experience.role}
+                        </h3>
+                        <p className={`text-lg font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                          {experience.company}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                      <span className="px-3 py-1 text-sm rounded-full font-medium bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                        📅 {experience.period}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
+                    {experience.description}
+                  </p>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-md font-semibold mb-3" style={{ color: experience.color }}>Key Responsibilities:</h4>
+                    <ul className="space-y-2 pl-6 list-disc">
+                      {experience.responsibilities.map((responsibility, rIndex) => (
+                        <li 
+                          key={rIndex}
+                          className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} transition-all duration-500`}
+                          style={{ 
+                            transitionDelay: activeSection === 'experiences' ? `${rIndex * 0.1 + 0.8}s` : '0s',
+                            opacity: (visibleExperiences.includes(index) || activeSection === 'experiences') && !isAnimating ? 1 : 0,
+                            transform: (visibleExperiences.includes(index) || activeSection === 'experiences') && !isAnimating ? 'translateX(0)' : 'translateX(20px)'
+                          }}
+                        >
+                          {responsibility}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-md font-semibold mb-3" style={{ color: experience.color }}>Technologies:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {experience.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 text-sm rounded-full font-medium transition-all duration-200 hover:scale-110 hover:shadow-md cursor-pointer"
+                          style={{
+                            backgroundColor: `${experience.color}20`,
+                            color: experience.color,
+                            transitionDelay: `${techIndex * 0.05 + 1}s`,
+                            opacity: (visibleExperiences.includes(index) || activeSection === 'experiences') && !isAnimating ? 1 : 0,
+                            transform: (visibleExperiences.includes(index) || activeSection === 'experiences') && !isAnimating ? 'translateY(0)' : 'translateY(10px)'
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        {/* Skills Section */}
+        {/* Projects Section */}
         <section id="skills" className="min-h-[calc(100vh-80px)] py-16 mb-16">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
@@ -369,7 +471,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Education Section */}
+        {/* Skills Section */}
         <section id="education" className="min-h-[calc(100vh-80px)] py-16 mb-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
