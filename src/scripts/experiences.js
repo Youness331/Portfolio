@@ -3,7 +3,7 @@ const experiencesData = [
         id: 1,
         company: "Werin Group",
         role: "AI Engineer",
-        period: "August 2025 - Present",
+        period: "July 2025 - Present",
         description: "Designing and implementing AI solutions with focus on large language models and automation workflows. Building internal tools to enhance product delivery and quality.",
         responsibilities: [
             "Design APIs and integrate third-party systems via REST/Webhooks",
