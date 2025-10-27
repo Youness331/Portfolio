@@ -247,7 +247,7 @@ export default function App() {
                 activeSection === 'home' && !isAnimating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}>
                 <a
-                                    href="./data_scientist_youness.pdf"
+                  href={`${process.env.PUBLIC_URL}/data_scientist_youness.pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-300"
